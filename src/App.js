@@ -1,7 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
+import SearchBar from './components/SearchBar';
 
 function App() {
+  const [searchValue, setSearchValue] = useState('default');
+
+  const handleSearchValueChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    console.log(searchValue);
+
+  };
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +32,7 @@ function App() {
         >
           Learn React
         </a>
+        <SearchBar value={searchValue} handleSearchValueChange={handleSearchValueChange} handleSearchSubmit={handleSearchSubmit} />
       </header>
     </div>
   );
