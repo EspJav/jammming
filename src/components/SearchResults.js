@@ -1,14 +1,12 @@
+import Track from "./Track";
 
-
-function SearchResults() {
-
-
-
+function SearchResults({tracks}) {
     return(
-        <ul>
-            <li>item 1</li>
-            <li>item 2</li>
-        </ul>
+        <div>
+    {tracks.map(({name, album, artist}) => {
+        return <Track name={name} album={album} artist={artist} />
+    })}
+    </div>
     )
 };
 

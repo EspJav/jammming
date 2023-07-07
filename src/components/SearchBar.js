@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 
 //passed props from main container
@@ -11,7 +11,7 @@ function SearchBar({handleSearchSubmit, handleSearchValueChange}) {
         <>
         <form onSubmit={handleSearchSubmit}>
             <input id="search" onChange={handleSearchValueChange}  placeholder="Search for a song.."></input>
-            <button type="submit">submit</button>
+            <button type="submit">Search</button>
 
         </form>
         </>
