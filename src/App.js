@@ -11,27 +11,25 @@ import fetchData from './modules/spotifyapi';
 
 function App() {
   //Functionality of search bar
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('Earth Wind and fire');
 
   const handleSearchValueChange = (e) => {
     setSearchValue(e.target.value);
   };
+
+  //handle options on search results
+  const [tracks, setTracks]  = useState([{name:'', artist: '', album: ''}]);
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     fetchData(searchValue).then((response) => {
       setTracks(response);
     });
    };
-   
-  //set state of search results
-  const [tracks, setTracks]  = useState([{name:'', artist: '', album: ''}]);
-
-
 
 
   return (
     <>
-      <div>
+      <div style={{textAlign: 'left', marginLeft: 25}}>
         <h1>Jammming!</h1>
         <p>Create a spotify playlist AND save it to your playlists!</p>
         <SearchBar handleSearchValueChange={handleSearchValueChange} handleSearchSubmit={handleSearchSubmit}/>
