@@ -1,17 +1,11 @@
 
 
-function Track({name, artist, album}) {
-    //console.log(`${name}`);
+function Track({info}) {
     return (
-        <>
-        <div>
-            <div>
-                <h3>{name}</h3>
-                <p>{artist}</p>
-                <p>{album}</p>
-            </div>
-            <button>+</button>
-        </div>
+    <>
+        <h3>{info.name}</h3>
+        <h4>{info.artist}</h4>
+        <h4>{info.album}</h4>
     </>
     )
 };

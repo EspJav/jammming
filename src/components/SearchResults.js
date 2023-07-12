@@ -1,17 +1,17 @@
 import Track from "./Track";
 
-function SearchResults({tracks}) {
-    return(
-        <div>
-            {tracks.map(({name, album, artist},index) => {
-            return (
-                <>
-                    <Track  key={index} name={name} album={album} artist={artist} />
-                </>
-            )
-        })}
+function SearchResults({tracks, handleAddButton}) {
+
+    const options = tracks.map((track) => 
+    {
+        return (
+        <div key={track.id}>
+            <Track info={track} />
+            <button value={track.id} onClick={handleAddButton}>Add</button>
         </div>
-    )
+        )
+    })
+    return options
 };
 
 export default SearchResults;
