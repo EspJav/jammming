@@ -1,10 +1,9 @@
 
 import './App.css';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 import Playlist from './components/Playlist';
-import Tracklist from './components/Tracklist';
 import fetchData from './modules/spotifyapi';
 
 
@@ -54,7 +53,7 @@ function App() {
           <SearchResults tracks={tracks} handleAddButton={handleAddButton} />
         </div>
         <div className='PlaylistArea' style={{border: '5px solid green'}}>
-          <Tracklist savedTracks={savedTracks} handleRemoveButton={handleRemoveButton} />
+          <Playlist savedTracks={savedTracks} handleRemoveButton={handleRemoveButton}/>
         </div>
       </div>
 
