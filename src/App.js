@@ -18,7 +18,8 @@ function App() {
   };
 
   //handle options on search results
-  const [tracks, setTracks]  = useState([{name:'', artist: '', album: ''}]);
+  const [tracks, setTracks]  = useState([]);
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     fetchData(searchValue).then((response) => {
@@ -26,15 +27,37 @@ function App() {
     });
    };
 
+   //handle state of added songs to tracklist
+   const [savedTracks, setSavedTracks] = useState([]);
 
+   const  handleAddButton = (e) => {
+    e.preventDefault();
+    const selectedTrack = tracks.filter((track) => track.id === e.target.value);
+    setSavedTracks(prev => [...prev, selectedTrack[0]])
+   };
+   
+   const handleRemoveButton = (e) => {
+    e.preventDefault();
+    setSavedTracks(prev => savedTracks.filter((track) => track.id !== e.target.value))
+  
+  }
+   //App final return statement
   return (
     <>
-      <div style={{textAlign: 'left', marginLeft: 25}}>
+      <div className='aboutArea' style={{border: '2px solid red'}}>
         <h1>Jammming!</h1>
         <p>Create a spotify playlist AND save it to your playlists!</p>
-        <SearchBar handleSearchValueChange={handleSearchValueChange} handleSearchSubmit={handleSearchSubmit}/>
-        <SearchResults tracks={tracks} />
       </div>
+      <div className='appArea' style={{border: '2px solid blue', display: 'flex', justifyContent: 'center', overflow: 'overlay'}}>
+        <div className='SearchArea'style={{border: '2px solid orange'}}>
+          <SearchBar handleSearchValueChange={handleSearchValueChange} handleSearchSubmit={handleSearchSubmit}/>
+          <SearchResults tracks={tracks} handleAddButton={handleAddButton} />
+        </div>
+        <div className='PlaylistArea' style={{border: '5px solid green'}}>
+          <Tracklist savedTracks={savedTracks} handleRemoveButton={handleRemoveButton} />
+        </div>
+      </div>
+
     </>
   )
 }

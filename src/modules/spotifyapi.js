@@ -28,12 +28,13 @@ async function fetchData(title) {
     const response = await fetch(url + parameters , options);
     const responseJson = await response.json();
     let info = responseJson.tracks.items;
-    //iterate through api response to pull out song name album name and artist name 
+    //iterate through api response to pull out song name, album, spotify id, and artist name 
     info.forEach((result) => {
         results.push({
             name: result.name,
             album: result.album.name,
             artist: result.artists[0].name,
+            id: result.id,
         });
 
     });
